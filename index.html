@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .txt {
+            background-color: #fff;
+            height: 30px;
+            line-height: 30px;
+            color: #333;
+            border-radius: 3px;
+            text-align: center;
+            font-family: monospace;
+        }
+
+        h1 {
+            text-align: center;
+            height: 110vh;
+
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>How many time you can scroll me?</h1>
+
+
+
+    <script>
+        function scrollMe() {
+            while (true) {
+                let windowRelativeBottom = document.documentElement.getBoundingClientRect().bottom;
+                if (windowRelativeBottom > document.documentElement.clientHeight + 100) break;
+                window.addEventListener('scroll', function() {
+                    document.getElementById('showScroll').innerHTML = pageYOffset + 'px';
+                    scroll = pageYOffset;
+                });
+                document.body.insertAdjacentHTML('beforeend', `<p class='txt'>${pageYOffset}px</p>`)
+            }
+        }
+        window.addEventListener('scroll', scrollMe);
+        scrollMe();
+
+    </script>
+</body>
+
+</html>
